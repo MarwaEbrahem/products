@@ -7,9 +7,9 @@
 //
 
 import Foundation
-class ProductsListViewModel : NSObject{
+class ProductsListViewModel{
     
-    var getProductsObj = ProductsAPI.shared
+    var getProductsObj : ProductsAPIProtocol = ProductsAPI.shared
     var productsList : Products! {
         didSet{
             self.bindProductsListViewModelToView()
@@ -24,21 +24,22 @@ class ProductsListViewModel : NSObject{
     var bindProductsListViewModelToView : (()->()) = {}
     var bindViewModelErrorToView : (()->()) = {}
     
-    override init() {
-        super .init()
+    init() {
         fetchProductListFromAPI()
     }
     
     
     func fetchProductListFromAPI (){
         
-        getProductsObj.getProducts { (result) in
+        getProductsObj.getProducts { [weak self](result) in
             switch result{
             case .success(let data):
                 guard let data = data else {return}
+                guard let self = self else {return}
                 self.productsList = data
                 
             case .failure(_):
+                guard let self = self else {return}
                 self.showError = "no internet connection"
             }
         }

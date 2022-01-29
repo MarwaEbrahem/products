@@ -9,4 +9,6 @@
 import Foundation
 struct Constants {
     static let url = "https://mockjson.free.beeceptor.com/my/api/path"
+    static let reuseIdentifier = "cell"
+    static let detailsVC = "details"
 }

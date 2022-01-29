@@ -36,10 +36,10 @@ class ProductsAPI: ProductsAPIProtocol {
                 let response = try decoder.decode(Products.self, from: data)
                 print(response[0].id)
                 DispatchQueue.main.async {
-                      completion(.success(response))
+                    completion(.success(response))
                 }
-              
-               
+                
+                
             } catch {
                 print(error)
             }

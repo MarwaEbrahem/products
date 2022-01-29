@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		435DC59E27A5FD600060D73F /* viewModelContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435DC59D27A5FD600060D73F /* viewModelContracts.swift */; };
 		436D4E7E27A55BBB008B7F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D4E7D27A55BBB008B7F08 /* AppDelegate.swift */; };
 		436D4E8027A55BBB008B7F08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D4E7F27A55BBB008B7F08 /* SceneDelegate.swift */; };
 		436D4E8227A55BBB008B7F08 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D4E8127A55BBB008B7F08 /* DetailsViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		435DC59D27A5FD600060D73F /* viewModelContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewModelContracts.swift; sourceTree = "<group>"; };
 		436D4E7A27A55BBB008B7F08 /* productsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = productsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		436D4E7D27A55BBB008B7F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		436D4E7F27A55BBB008B7F08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		435DC59C27A5FD220060D73F /* contracts */ = {
+			isa = PBXGroup;
+			children = (
+				435DC59D27A5FD600060D73F /* viewModelContracts.swift */,
+			);
+			path = contracts;
+			sourceTree = "<group>";
+		};
 		436D4E7127A55BBB008B7F08 = {
 			isa = PBXGroup;
 			children = (
@@ -72,12 +82,12 @@
 		436D4E7C27A55BBB008B7F08 /* productsApp */ = {
 			isa = PBXGroup;
 			children = (
+				435DC59C27A5FD220060D73F /* contracts */,
 				436D4E9627A56987008B7F08 /* viewModel */,
 				436D4E9527A5697D008B7F08 /* view */,
 				436D4E9427A56967008B7F08 /* model */,
 				436D4E7D27A55BBB008B7F08 /* AppDelegate.swift */,
 				436D4E7F27A55BBB008B7F08 /* SceneDelegate.swift */,
-				436D4E8127A55BBB008B7F08 /* DetailsViewController.swift */,
 				436D4E8327A55BBB008B7F08 /* Main.storyboard */,
 				436D4E8927A55BBE008B7F08 /* Assets.xcassets */,
 				436D4E8B27A55BBE008B7F08 /* LaunchScreen.storyboard */,
@@ -104,6 +114,7 @@
 			children = (
 				436D4EA427A59251008B7F08 /* ProductsCollectionViewController.swift */,
 				436D4EA827A5AC8F008B7F08 /* ProductsCollectionViewCell.swift */,
+				436D4E8127A55BBB008B7F08 /* DetailsViewController.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -214,6 +225,7 @@
 				436D4E8227A55BBB008B7F08 /* DetailsViewController.swift in Sources */,
 				436D4EA127A57A92008B7F08 /* ProductsListViewModel.swift in Sources */,
 				436D4E8827A55BBB008B7F08 /* productsApp.xcdatamodeld in Sources */,
+				435DC59E27A5FD600060D73F /* viewModelContracts.swift in Sources */,
 				436D4EA527A59251008B7F08 /* ProductsCollectionViewController.swift in Sources */,
 				436D4E9B27A569F1008B7F08 /* Products.swift in Sources */,
 				436D4EA927A5AC8F008B7F08 /* ProductsCollectionViewCell.swift in Sources */,
