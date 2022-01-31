@@ -10,7 +10,7 @@ import Foundation
 class ProductsDataFacade {
     private let productsAPIObj : ProductsAPIProtocol = ProductsAPI.shared
     private let localProductsDataObj = LocalDataManager.sharedInstance
-    private var isOnline = false
+    private var isOnline = Reachability.isConnectedToNetwork()
     
     func fetchProductsListData(completion: @escaping (Products) -> ()) {
         if isOnline {
@@ -22,27 +22,29 @@ class ProductsDataFacade {
         }else{
             fetchLocalData { (products) in
                 print(products.count)
-                completion(products)
+                DispatchQueue.main.async {
+                     completion(products)
+                }
             }
         }
     }
     
-   private func fetchAPIData(completion: @escaping (Products) -> ()) {
-        productsAPIObj.getProducts { [weak self](result) in
+    private func fetchAPIData(completion: @escaping (Products) -> ()) {
+        productsAPIObj.getProducts {(result) in
             switch result {
             case .success(let data):
                 guard let data = data else {return}
                 completion(data)
             case .failure(_):
-                guard let self = self else {return}
-                self.isOnline = false
+                completion([])
             }
         }
     }
     
-  private func fetchLocalData(completion: @escaping (Products) -> ()){
+    private func fetchLocalData(completion: @escaping (Products) -> ()){
         localProductsDataObj.getProductsListFromCoreData { (result) in
-           completion(result)
+            print("\(result)" + " marwa")
+                completion(result)
         }
     }
     

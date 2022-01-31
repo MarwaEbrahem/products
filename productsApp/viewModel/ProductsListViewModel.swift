@@ -33,7 +33,10 @@ class ProductsListViewModel{
         ProductsDataFacadeObj.fetchProductsListData {[weak self] (products) in
             guard let self = self else {return}
             if products.count == 0 {
-                self.showError = "some error happen"
+                DispatchQueue.main.async {
+                    self.showError = "some error happen"
+                }
+                
                // print("\(products.count)" + "marwa")
             }else{
                 self.productsList = products

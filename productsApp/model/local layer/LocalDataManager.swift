@@ -32,6 +32,7 @@ extension LocalDataManager {
         guard let managedContext = getContext() else { return }
         let fetchReq = NSFetchRequest<NSManagedObject>(entityName: "ProductsData")
         concurrentQueue.sync {
+            print("off")
             let products = try! managedContext.fetch(fetchReq).first
             guard let productsData = products else {return}
             guard let data = productsData.value(forKey: "productsList") else { return}
@@ -40,9 +41,9 @@ extension LocalDataManager {
                 print(loadedProducts[0].productDescription + " marwa")
                 productsList = loadedProducts
             }
-            completion(productsList)
+            
         }
-        
+        completion(productsList)
     }
     
     func addProductsListToCoreData(productsList : Products){
