@@ -9,7 +9,7 @@
 import Foundation
 class ProductsListViewModel{
     
-    var getProductsObj : ProductsAPIProtocol = ProductsAPI.shared
+    var ProductsDataFacadeObj = ProductsDataFacade()
     var productsList : Products! {
         didSet{
             self.bindProductsListViewModelToView()
@@ -25,24 +25,22 @@ class ProductsListViewModel{
     var bindViewModelErrorToView : (()->()) = {}
     
     init() {
-        fetchProductListFromAPI()
+        fetchProductListData()
     }
     
     
-    func fetchProductListFromAPI (){
-        
-        getProductsObj.getProducts { [weak self](result) in
-            switch result{
-            case .success(let data):
-                guard let data = data else {return}
-                guard let self = self else {return}
-                self.productsList = data
+    func fetchProductListData(){
+        ProductsDataFacadeObj.fetchProductsListData {[weak self] (products) in
+            guard let self = self else {return}
+            if products.count == 0 {
+                self.showError = "some error happen"
+               // print("\(products.count)" + "marwa")
+            }else{
+                self.productsList = products
+              print( self.productsList[3].productDescription)
+                print("\(products.count)" + "marwa")
                 
-            case .failure(_):
-                guard let self = self else {return}
-                self.showError = "no internet connection"
             }
         }
-        
     }
 }
