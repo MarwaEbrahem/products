@@ -7,9 +7,9 @@
 //
 
 import Foundation
-protocol ProductListViewModelType {
-    var bindProductsListViewModelToView : (()->()) {get set}
-    var bindViewModelErrorToView : (()->()) {get set}
-   // var productsList : Products {get set}
-  //  var showError : String {get set}
-}
+//protocol ProductListViewModelType {
+//    var bindProductsListViewModelToView : (()->()) {get set}
+//    var bindViewModelErrorToView : (()->()) {get set}
+//   // var productsList : Products {get set}
+//  //  var showError : String {get set}
+//}

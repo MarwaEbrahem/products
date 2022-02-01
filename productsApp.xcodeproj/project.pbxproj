@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		435DC59E27A5FD600060D73F /* viewModelContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435DC59D27A5FD600060D73F /* viewModelContracts.swift */; };
+		435EE23127A8A0B800F97E03 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435EE23027A8A0B800F97E03 /* Bindable.swift */; };
 		436D0B4727A73C0900C64FEC /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D0B4627A73C0900C64FEC /* LocalDataManager.swift */; };
 		436D0B4927A760D000C64FEC /* ProductsDataFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D0B4827A760D000C64FEC /* ProductsDataFacade.swift */; };
 		436D4E7E27A55BBB008B7F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436D4E7D27A55BBB008B7F08 /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		435DC59D27A5FD600060D73F /* viewModelContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewModelContracts.swift; sourceTree = "<group>"; };
+		435EE23027A8A0B800F97E03 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		436D0B4627A73C0900C64FEC /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 		436D0B4827A760D000C64FEC /* ProductsDataFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDataFacade.swift; sourceTree = "<group>"; };
 		436D4E7A27A55BBB008B7F08 /* productsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = productsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				436D4EA027A57A92008B7F08 /* ProductsListViewModel.swift */,
+				435EE23027A8A0B800F97E03 /* Bindable.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				436D4EA127A57A92008B7F08 /* ProductsListViewModel.swift in Sources */,
 				436D0B4927A760D000C64FEC /* ProductsDataFacade.swift in Sources */,
 				436D4E8827A55BBB008B7F08 /* productsApp.xcdatamodeld in Sources */,
+				435EE23127A8A0B800F97E03 /* Bindable.swift in Sources */,
 				435DC59E27A5FD600060D73F /* viewModelContracts.swift in Sources */,
 				436D0B4727A73C0900C64FEC /* LocalDataManager.swift in Sources */,
 				436D4EA527A59251008B7F08 /* ProductsCollectionViewController.swift in Sources */,

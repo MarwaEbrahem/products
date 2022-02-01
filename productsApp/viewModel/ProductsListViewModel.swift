@@ -10,19 +10,8 @@ import Foundation
 class ProductsListViewModel{
     
     var ProductsDataFacadeObj = ProductsDataFacade()
-    var productsList : Products! {
-        didSet{
-            self.bindProductsListViewModelToView()
-        }
-    }
-    
-    var showError : String!{
-        didSet{
-            self.bindViewModelErrorToView()
-        }
-    }
-    var bindProductsListViewModelToView : (()->()) = {}
-    var bindViewModelErrorToView : (()->()) = {}
+    var productsList = Bindable<Products>()
+    var showError = Bindable<String>()
     
     init() {
         fetchProductListData()
@@ -33,14 +22,11 @@ class ProductsListViewModel{
         ProductsDataFacadeObj.fetchProductsListData {[weak self] (products) in
             guard let self = self else {return}
             if products.count == 0 {
-                DispatchQueue.main.async {
-                    self.showError = "some error happen"
-                }
-                
-               // print("\(products.count)" + "marwa")
+                self.showError.value = "some error happen"
+                print("\(products.count)" + "some error happen")
             }else{
-                self.productsList = products
-              print( self.productsList[3].productDescription)
+               
+                self.productsList.value = products
                 print("\(products.count)" + "marwa")
                 
             }

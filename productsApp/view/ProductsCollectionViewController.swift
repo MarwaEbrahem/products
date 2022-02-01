@@ -14,26 +14,25 @@ class ProductsCollectionViewController: UICollectionViewController {
     var waiting = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        productsListViewModelObj.bindProductsListViewModelToView = { [weak self] in
+        productsListViewModelObj.productsList.bind { [weak self] (products) in
             guard let self = self else {return}
-            print(self.productsListViewModelObj.productsList[0].productDescription)
-            self.loadData()
+            guard let products = products else {return}
+            print(products[7].productDescription)
+            self.loadData(products: products)
         }
-        productsListViewModelObj.bindViewModelErrorToView = { [weak self] in
-          //  guard let self = self else {return}
-            print("self.productsListViewModelObj.showError ")
+        productsListViewModelObj.showError.bind { (error) in
+            print("" + "errror show")
         }
-        
     }
-    func loadData() {
-        self.productsListData.append( contentsOf: self.productsListViewModelObj.productsList )
+    func loadData(products: Products) {
+        self.productsListData.append( contentsOf: products )
         self.collectionView.reloadData()
     }
     func loadMoreData() {
         if !self.waiting {
             self.waiting = true
             DispatchQueue.global().async {
-                self.productsListData.append( contentsOf: self.productsListViewModelObj.productsList )
+                self.productsListViewModelObj.fetchProductListData()
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                     self.waiting = false
