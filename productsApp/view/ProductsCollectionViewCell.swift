@@ -21,4 +21,33 @@ class ProductsCollectionViewCell: UICollectionViewCell {
             productImage.loadFrom(URLAddress: productsData.image.url)
         }
     }
+    @IBOutlet private var maxWidthConstraint: NSLayoutConstraint! {
+            didSet {
+                maxWidthConstraint.isActive = false
+            }
+        }
+        @IBOutlet private var maxHeightConstraint: NSLayoutConstraint! {
+            didSet {
+                maxHeightConstraint.isActive = false
+            }
+        }
+    
+        var maxWidth: CGFloat? = nil {
+            didSet {
+                guard let maxWidth = maxWidth else {
+                    return
+                }
+                maxWidthConstraint.isActive = true
+                maxWidthConstraint.constant = maxWidth
+            }
+        }
+        var maxHeight: CGFloat? = nil {
+            didSet {
+                guard let maxHeight = maxHeight  else {
+                    return
+                }
+                maxHeightConstraint.isActive = true
+                maxHeightConstraint.constant = maxHeight
+            }
+        }
 }

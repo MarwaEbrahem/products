@@ -14,6 +14,8 @@ class ProductsCollectionViewController: UICollectionViewController {
     var waiting = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         productsListViewModelObj.productsList.bind { [weak self] (products) in
             guard let self = self else {return}
             guard let products = products else {return}
@@ -56,28 +58,27 @@ class ProductsCollectionViewController: UICollectionViewController {
         
         let products =  self.productsListData[indexPath.row]
         cell.productsData = products
+        cell.maxWidth = collectionView.frame.width / 2 - 5
+        cell.maxHeight = CGFloat(products.image.height)
         
         return cell
     }
-    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == productsListData.count-1 && !self.waiting  {
-            self.loadMoreData()
-        }
-    }
+
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let details = (self.storyboard?.instantiateViewController(identifier: Constants.detailsVC )) as! DetailsViewController
         details.productData = self.productsListData[indexPath.row]
         self.navigationController?.pushViewController(details, animated: true)
     }
-    
-    
-}
-extension ProductsCollectionViewController :  UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        return CGSize(width: 200, height: 300)
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsety = scrollView.contentOffset.y
+        let height = scrollView.contentSize.height
+        
+        if offsety > height - scrollView.frame.size.height{
+            print("reload")
+            self.loadMoreData()
+        }
     }
     
 }
+
