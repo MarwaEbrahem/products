@@ -16,7 +16,7 @@ protocol ProductsAPIProtocol{
 class ProductsAPI: ProductsAPIProtocol {
     
     static let shared = ProductsAPI()
-    private let concurrentQueue = DispatchQueue(label: "concurrentQueue",attributes: .concurrent)
+    private let serialQueue = DispatchQueue(label: "serialQueue")
     private init() {}
     
     func getProducts(completion: @escaping (Result<Products?, NSError>) -> ()) {
@@ -45,7 +45,7 @@ class ProductsAPI: ProductsAPIProtocol {
                 print(error)
             }
         }
-        concurrentQueue.sync {
+        serialQueue.sync {
             task.resume()
         }
     }
