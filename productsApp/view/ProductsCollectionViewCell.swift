@@ -16,7 +16,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     
     var productsData:Product!{
         didSet{
-            productPrice.text = "\(productsData.price)"
+            productPrice.text = "\(productsData.price)$"
             productDesc.text = productsData.productDescription
             productImage.loadFrom(URLAddress: productsData.image.url)
         }
