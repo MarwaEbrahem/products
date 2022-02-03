@@ -10,9 +10,9 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var productImg: UIImageView!
-    @IBOutlet weak var productPrice: UILabel!
-    @IBOutlet weak var productDes: UILabel!
+    @IBOutlet private weak var productImg: UIImageView!
+    @IBOutlet private weak var productPrice: UILabel!
+    @IBOutlet private weak var productDes: UILabel!
     
     var productsData:Product!{
         didSet{

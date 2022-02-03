@@ -7,9 +7,12 @@
 //
 
 import Foundation
-//protocol ProductListViewModelType {
-//    var bindProductsListViewModelToView : (()->()) {get set}
-//    var bindViewModelErrorToView : (()->()) {get set}
-//   // var productsList : Products {get set}
-//  //  var showError : String {get set}
-//}
+
+protocol ProductListViewModelType {
+      func fetchProductListData()
+      var productsList : Bindable<Products> {get}
+      var showError : Bindable<String> {get}
+}
+protocol ProductsDataFacadeType {
+     func fetchProductsListData(completion: @escaping (Products) -> ())
+}

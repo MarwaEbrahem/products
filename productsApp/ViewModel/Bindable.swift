@@ -7,7 +7,9 @@
 //
 
 import Foundation
+
 class Bindable<T> {
+    
     var value: T? {
         didSet {
             observer?(value)

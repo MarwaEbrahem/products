@@ -13,4 +13,6 @@ struct Constants {
     static let detailsVC = "details"
     static let productCellNib = "CollectionViewCell"
     static let loadingReusableNib = "LoadingReusableView"
+    static let entityName = "ProductsData"
+    static let attributes = "productsList"
 }

@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 
+protocol LocalDataManagerProtocol {
+    func getProductsListFromCoreData(completion: @escaping (Products) -> ())
+    func addProductsListToCoreData(productsList : Products)
+}
+
 class LocalDataManager {
     
     public static let sharedInstance = LocalDataManager()
@@ -24,21 +29,20 @@ class LocalDataManager {
     
 }
 
-extension LocalDataManager {
+extension LocalDataManager : LocalDataManagerProtocol{
     
     func getProductsListFromCoreData(completion: @escaping (Products) -> ()) {
         
         var productsList : Products = []
         guard let managedContext = getContext() else { return }
-        let fetchReq = NSFetchRequest<NSManagedObject>(entityName: "ProductsData")
+        let fetchReq = NSFetchRequest<NSManagedObject>(entityName: Constants.entityName)
         concurrentQueue.sync {
             print("off")
             let products = try! managedContext.fetch(fetchReq).first
             guard let productsData = products else {return}
-            guard let data = productsData.value(forKey: "productsList") else { return}
+            guard let data = productsData.value(forKey: Constants.attributes) else { return}
             let decoder = JSONDecoder()
             if let loadedProducts = try? decoder.decode(Products.self, from: data as! Data) {
-                print(loadedProducts[0].productDescription + " marwa")
                 productsList = loadedProducts
             }
             
@@ -49,13 +53,12 @@ extension LocalDataManager {
     func addProductsListToCoreData(productsList : Products){
         
         guard let managedContext = getContext() else { return }
-        let entity = NSEntityDescription.entity(forEntityName: "ProductsData", in: managedContext)
+        let entity = NSEntityDescription.entity(forEntityName: Constants.entityName, in: managedContext)
         let productsData = NSManagedObject(entity: entity!, insertInto: managedContext)
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(productsList) {
             concurrentQueue.async(flags: .barrier) {
-                productsData.setValue(encoded, forKey: "productsList")
-                print("done\n")
+                productsData.setValue(encoded, forKey: Constants.attributes)
             }
         }
         do{

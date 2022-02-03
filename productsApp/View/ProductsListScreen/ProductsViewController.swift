@@ -11,7 +11,7 @@ import UIKit
 class ProductsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    let productsListViewModelObj = ProductsListViewModel()
+    let productsListViewModelObj : ProductListViewModelType = ProductsListViewModel()
     let layout = UICollectionViewFlowLayout()
     var productsListData : Products = []
     var loadingView: LoadingReusableView?
@@ -36,7 +36,7 @@ class ProductsViewController: UIViewController {
         }
         
         productsListViewModelObj.showError.bind { (error) in
-            print("" + "errror show")
+            self.displayAlert()
         }
     }
     

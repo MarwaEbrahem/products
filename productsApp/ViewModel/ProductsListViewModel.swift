@@ -7,9 +7,9 @@
 //
 
 import Foundation
-class ProductsListViewModel{
+class ProductsListViewModel : ProductListViewModelType{
     
-    var ProductsDataFacadeObj = ProductsDataFacade()
+    var ProductsDataFacadeObj : ProductsDataFacadeType = ProductsDataFacade()
     var productsList = Bindable<Products>()
     var showError = Bindable<String>()
     
@@ -22,13 +22,9 @@ class ProductsListViewModel{
         ProductsDataFacadeObj.fetchProductsListData {[weak self] (products) in
             guard let self = self else {return}
             if products.count == 0 {
-                self.showError.value = "some error happen"
-                print("\(products.count)" + "some error happen")
+                self.showError.value = "no internet connection"
             }else{
-               
                 self.productsList.value = products
-                print("\(products.count)" + "marwa")
-                
             }
         }
     }
