@@ -13,6 +13,7 @@ class ProductsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     let productsListViewModelObj : ProductListViewModelType = ProductsListViewModel()
     let layout = UICollectionViewFlowLayout()
+    let transition = CustomTransition()
     var productsListData : Products = []
     var loadingView: LoadingReusableView?
     var waiting = false
@@ -20,6 +21,7 @@ class ProductsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = self
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
@@ -84,7 +86,7 @@ extension ProductsViewController : UICollectionViewDelegate , UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let details = (self.storyboard?.instantiateViewController(identifier: Constants.detailsVC )) as! DetailsViewController
         details.productData = self.productsListData[indexPath.row]
-        self.navigationController?.pushViewController(details, animated: true)
+       self.navigationController?.pushViewController(details, animated: true)
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -127,4 +129,17 @@ extension ProductsViewController : UICollectionViewDelegate , UICollectionViewDa
     }
     
     
+}
+
+extension ProductsViewController : UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+
+    func navigationController(
+        _ navigationController: UINavigationController,
+        animationControllerFor operation: UINavigationController.Operation,
+        from fromVC: UIViewController,
+        to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transition.popStyle = (operation == .pop)
+        return transition
+    }
 }

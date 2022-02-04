@@ -28,6 +28,7 @@
 		43B1B82427AB1FE800CF8476 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1B82227AB1FE800CF8476 /* CollectionViewCell.swift */; };
 		43B1B82527AB1FE800CF8476 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B1B82327AB1FE800CF8476 /* CollectionViewCell.xib */; };
 		43B1B82727AB35FF00CF8476 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B1B82627AB35FF00CF8476 /* ProductsViewController.swift */; };
+		43F7B30527ACB6690081DE3D /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F7B30427ACB6690081DE3D /* CustomTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		43B1B82227AB1FE800CF8476 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		43B1B82327AB1FE800CF8476 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		43B1B82627AB35FF00CF8476 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		43F7B30427ACB6690081DE3D /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 			children = (
 				436D4E9E27A5716C008B7F08 /* Constants.swift */,
 				436D4EAA27A5BDC9008B7F08 /* Utils.swift */,
+				43F7B30427ACB6690081DE3D /* CustomTransition.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				435DC59E27A5FD600060D73F /* viewModelContracts.swift in Sources */,
 				436D0B4727A73C0900C64FEC /* LocalDataManager.swift in Sources */,
 				436D4E9B27A569F1008B7F08 /* Products.swift in Sources */,
+				43F7B30527ACB6690081DE3D /* CustomTransition.swift in Sources */,
 				436D4EAB27A5BDC9008B7F08 /* Utils.swift in Sources */,
 				436D4E9F27A5716C008B7F08 /* Constants.swift in Sources */,
 				436D4E7E27A55BBB008B7F08 /* AppDelegate.swift in Sources */,
